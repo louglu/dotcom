@@ -1,0 +1,22 @@
+{
+  "name": "dotcom",
+  "version": "0.1.0",
+  "homepage": "https://github.com/louglu/dotcom",
+  "authors": [
+    "heymrcarter <heymrcarter14@gmail.com>"
+  ],
+  "description": "louglu.com",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
