@@ -1,0 +1,26 @@
+$primaryThemeColor: #bf0a30;
+$secondaryThemeColor: #002868;
+$tertiaryThemeColor: #ffffff;
+
+:root {
+  --background-color: #cccccc;
+  --text-color: rgba(0, 0, 0, 0.85);
+  --louglu-gt-color: #{$primaryThemeColor};
+  --louglu-l1-color: #{$primaryThemeColor};
+  --louglu-o-color: #{$tertiaryThemeColor};
+  --louglu-u1-color: #{$secondaryThemeColor};
+  --louglu-g-color: #{$primaryThemeColor};
+  --louglu-l2-color: #{$tertiaryThemeColor};
+  --louglu-u2-color: #{$secondaryThemeColor};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: rgba(0, 0, 0, 0.85);
+    --text-color: #{$tertiaryThemeColor};
+  }
+
+  .brand span {
+    text-shadow: 0 0 2px $tertiaryThemeColor;
+  }
+}

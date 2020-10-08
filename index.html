@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head itemscope itemtype="http://schema.org/WebSite">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Louglu</title>
+
+    <meta name="author" content="Louglu" />
+    <meta name="keywords" content="Louglu" />
+    <meta
+      name="description"
+      content="Louglu is a technology startup based in Louisville, Kentucky"
+    />
+
+    <meta itemprop="name" content="Louglu" />
+    <meta
+      itemprop="description"
+      content="Louglu is a technology startup based in Louisville, Kentucky"
+    />
+    <meta itemprop="image" content="https://louglu.com/img/louglu.jpg" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Louglu" />
+
+    <meta property="og:url" content="https://louglu.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Louglu" />
+    <meta property="og:image" content="https://louglu.com/img/louglu.jpg" />
+    <meta
+      property="og:description"
+      content="Louglu is a technology startup based in Louisville, Kentucky"
+    />
+    <meta property="og:site_name" content="Louglu" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="https://louglu.com" />
+    <meta name="twitter:title" content="Louglu" />
+    <meta
+      name="twitter:description"
+      content="Louglu is a technology startup based in Louisville, Kentucky"
+    />
+    <meta name="twitter:image" content="https://louglu.com/img/louglu.jpg" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" hreflang="en" href="https://louglu.com/en" />
+    <link type="text/plain" rel="author" href="humans.txt" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/structure.css" />
+    <link rel="stylesheet" href="/css/themes/default.css" />
+    <link rel="stylesheet" href="/css/louglu.css" />
+  </head>
+
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <main role="main">
+      <h1 id="brand-name" class="visually-hidden">Louglu</h1>
+      <div class="brand" aria-hidden="true">
+        <span class="gt">></span>
+        <div class="typewriter flex-row">
+          <span class="l1">l</span>
+          <span class="o">o</span>
+          <span class="u1">u</span>
+          <span class="g">g</span>
+          <span class="l2">l</span>
+          <span class="u2">u</span>
+        </div>
+      </div>
+      <blockquote class="tagline">Coming soon</blockquote>
+    </main>
+
+    <footer>
+      <p>&copy; Copyright <span data-current-year>2020</span> Louglu LLC.</p>
+      <p>All Rights Reserved.</p>
+    </footer>
+  </body>
+
+  <script>
+    function addDateToFooter() {
+      const year = new Date().toLocaleDateString("en-US", { year: "numeric" })
+      const FOUNDED = "2020"
+      const copyrightYear = year === FOUNDED ? year : `${FOUNDED} - ${year}`
+      document.querySelector("[data-current-year]").innerHTML = copyrightYear
+    }
+
+    async function animateBranding() {
+      return new Promise((resolve) => {
+        const brandLetters = document.querySelectorAll(".typewriter span")
+        let currentLetter = 0,
+          typingInterval
+
+        typingInterval = setInterval(() => {
+          if (currentLetter === brandLetters.length) {
+            clearInterval(typingInterval)
+            resolve()
+          }
+
+          brandLetters[currentLetter].style.opacity = "1"
+          currentLetter++
+        }, 150)
+      })
+    }
+
+    function animateTagline() {
+      const tagline = document.querySelector(".tagline")
+      tagline.classList.add("fade-in")
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      addDateToFooter()
+      animateBranding().then(animateTagline)
+    })
+  </script>
+</html>
+
+<!-- 2442327 2438841 -->

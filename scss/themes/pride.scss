@@ -1,0 +1,28 @@
+$primaryThemeColor: rgba(0, 0, 0, 0.85);
+$secondaryThemeColor: #ffffff;
+
+$prideRedColor: #ff0018;
+$prideOrangeColor: #ffa52c;
+$prideYellowColor: #ffff41;
+$prideGreenColor: #008018;
+$prideBlueColor: #0000f9;
+$prideVioletColor: #86007d;
+
+:root {
+  --background-color: #{$secondaryThemeColor};
+  --text-color: #{$primaryThemeColor};
+  --louglu-gt-color: #{$prideRedColor};
+  --louglu-l1-color: #{$prideRedColor};
+  --louglu-o-color: #{$prideOrangeColor};
+  --louglu-u1-color: #{$prideYellowColor};
+  --louglu-g-color: #{$prideGreenColor};
+  --louglu-l2-color: #{$prideBlueColor};
+  --louglu-u2-color: #{$prideVioletColor};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #{$primaryThemeColor};
+    --text-color: #{$secondaryThemeColor};
+  }
+}
