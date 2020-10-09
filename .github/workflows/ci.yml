@@ -6,9 +6,9 @@ name: CI
 # events but only for the main branch
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,34 +21,34 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       - name: Create CSS directory
         run: mkdir -p $GITHUB_WORKSPACE/css/themes
-      
+
       - name: Compile structure.scss
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/structure.scss
           destination: css/structure.css
-      
+
       - name: Compile louglu.scss
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/louglu.scss
           destination: css/louglu.css
-      
+
       - name: Compile BBN Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/bbn.scss
           destination: css/themes/bbn.css
-      
+
       - name: Compile Blue Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/blue.scss
           destination: css/themes/blue.css
-          
+
       - name: Compile Default Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
@@ -60,45 +60,75 @@ jobs:
         with:
           source: scss/themes/green.scss
           destination: css/themes/green.css
-      
+
       - name: Compile L1C4 Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/l1c4.scss
           destination: css/themes/l1c4.css
-      
+
       - name: Compile Orange Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/orange.scss
           destination: css/themes/orange.css
-      
+
       - name: Compile Pink Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/pink.scss
           destination: css/themes/pink.css
-      
+
       - name: Compile Pride Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/pride.scss
           destination: css/themes/pride.css
-      
+
       - name: Compile Red Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/red.scss
           destination: css/themes/red.css
-      
+
       - name: Compile USA Theme
         uses: gha-utilities/sass-build@v0.2.7
         with:
           source: scss/themes/usa.scss
           destination: css/themes/usa.css
-      
-      - name: Upload Site Artifact
-        uses: actions/upload-artifact@v1.0.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          name: site
-          path: .
+          node-version: 12
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+
+      - name: Create site folder
+        run: mkdir _site
+
+      - name: Copy files
+        run: |
+          cp -R css _site/css
+          cp -R img _site/img
+          cp *.html _site/*.html
+          cp *.png _site/*.png
+          cp *.ico _site/*.ico
+          cp *.txt _site/*.txt
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.6.2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: _site
+          CLEAN: true
+
+      # - name: Upload Site Artifact
+      #   uses: actions/upload-artifact@v1.0.0
+      #   with:
+      #     name: site
+      #     path: .
