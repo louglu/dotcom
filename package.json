@@ -1,0 +1,46 @@
+{
+  "name": "@louglu/dotcom",
+  "version": "0.0.0-development",
+  "description": "The public Louglu website",
+  "private": "true",
+  "main": "index.html",
+  "scripts": {
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/louglu/dotcom.git"
+  },
+  "author": "Tom Carter",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/louglu/dotcom/issues"
+  },
+  "homepage": "https://louglu.com",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "husky": "^4.3.0",
+    "semantic-release": "^17.1.2"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}
