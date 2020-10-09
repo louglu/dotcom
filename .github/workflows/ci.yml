@@ -114,10 +114,10 @@ jobs:
         run: |
           cp -R css _site/css
           cp -R img _site/img
-          cp *.html _site/*.html
-          cp *.png _site/*.png
-          cp *.ico _site/*.ico
-          cp *.txt _site/*.txt
+          cp *.html _site
+          cp *.png _site
+          cp *.ico _site
+          cp *.txt _site
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.6.2
