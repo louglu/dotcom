@@ -5,6 +5,8 @@
   "private": "true",
   "main": "index.html",
   "scripts": {
+    "serve": "npx serve .",
+    "dev": "npx sass --watch scss:css",
     "semantic-release": "semantic-release"
   },
   "repository": {
